@@ -7,9 +7,21 @@ export function createPost(post) {
     }
 }
 
+export function showLoader() {
+    return {
+        type: SHOW_LOADER
+    }
+}
+
+export function hideLoader() {
+    return {
+        type: HIDE_LOADER
+    }
+}
+
 export function fetchPosts() {
     return async dispatch => {
-        dispatch({ type: SHOW_LOADER });
+        dispatch(showLoader());
 
         const responce = await fetch(
             'https://jsonplaceholder.typicode.com/posts?_limit=5',
@@ -17,8 +29,8 @@ export function fetchPosts() {
         const json = await responce.json()
 
         setTimeout(() => {
-            dispatch({ type: HIDE_LOADER });
             dispatch({ type: FETCH_POSTS, payload: json })
+            dispatch(hideLoader())
         }, 2000);
         
     }

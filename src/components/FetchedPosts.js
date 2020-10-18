@@ -1,16 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 
+import { Loader } from './Loader';
 import Post from './Post';
 import React from 'react';
 import { fetchPosts } from '../redux/actions';
 
 export default () => {
     const dispatch = useDispatch();
-    const posts = useSelector(state => state.posts.fetchedPosts);
+    const posts = useSelector((state) => state.posts.fetchedPosts);
     const loading = useSelector((state) => state.app.loading);
-    
+
     if (loading) {
-        return <p className="text-center">Loading</p>;
+        return <Loader />;
     }
 
     if (!posts.length && !loading) {
