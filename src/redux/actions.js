@@ -1,4 +1,4 @@
-import { CREATE_POST, FETCH_POSTS } from "./types";
+import { CREATE_POST, FETCH_POSTS, HIDE_LOADER, SHOW_LOADER } from "./types";
 
 export function createPost(post) {
     return {
@@ -9,11 +9,17 @@ export function createPost(post) {
 
 export function fetchPosts() {
     return async dispatch => {
+        dispatch({ type: SHOW_LOADER });
+
         const responce = await fetch(
             'https://jsonplaceholder.typicode.com/posts?_limit=5',
         );
         const json = await responce.json()
 
-        dispatch({ type: FETCH_POSTS, payload: json })
+        setTimeout(() => {
+            dispatch({ type: HIDE_LOADER });
+            dispatch({ type: FETCH_POSTS, payload: json })
+        }, 2000);
+        
     }
 }
