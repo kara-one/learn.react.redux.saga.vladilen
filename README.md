@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).<br /><br />
+Workshop React Redux + Saga from Vladilen Minin<br />
+Youtube: https://www.youtube.com/watch?v=G3GGXIhggGs
 
 ## Available Scripts
 
